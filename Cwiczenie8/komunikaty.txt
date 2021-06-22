@@ -1,0 +1,6 @@
+Document added: 14185
+Dokument: 14185 - {"Year": 22, "number": 14185, "name": "Yurii Gevtsi"}
+Dokument: 14185 - updated (edited field 'number' new val 14185)
+Dokument: 14185 - {"Year": 22, "number": 14185, "name": "Yurii Gevtsi"}
+Dokument: 14185 - deleted
+Document not found: 14185 (Dokument: None)

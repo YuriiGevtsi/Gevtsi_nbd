@@ -1,0 +1,51 @@
+#Zadanie 1
+Wszystkie filmy:
+MATCH (movie:Movie)
+RETURN movie
+
+#Zadanie 2
+Wszystkie filmy, w których grał Hugo Weaving:
+
+MATCH (actor:Person { name: 'Hugo Weaving' })-[:ACTED_IN]->(movie)
+RETURN actor, movie
+
+#Zadanie 3
+Reżyserzy filmów, w których grał Hugo Weaving:
+
+MATCH (actor:Person { name: 'Hugo Weaving' })-[:ACTED_IN]->(movie)<-[:DIRECTED]-(director)
+RETURN movie, director
+
+#Zadanie 4
+Wszystkie osoby, z którymi Hugo Weaving grał w tych samych filmach:
+
+MATCH (mainActor:Person { name: 'Hugo Weaving' })-[:ACTED_IN]->(movie)<-[:ACTED_IN]-(actor)
+RETURN DISTINCT actor
+
+#Zadanie 5
+Wszystkie filmy osób, które grały w Matrix:
+
+MATCH (Movie { title: 'The Matrix' })<-[:ACTED_IN]-(actor)-[:ACTED_IN]->(movie)
+RETURN movie, COLLECT(actor) AS Actors
+
+#Zadanie 6
+Listę aktorów (aktor = osoba, która grała przynajmniej w jednym filmie)
+wraz z ilością filmów, w których grali:
+
+MATCH (actor:Person)-[:ACTED_IN]->(movie)
+RETURN DISTINCT actor, count(movie), COLLECT(movie.title) AS movies
+
+#Zadanie 7
+Listę osób, które napisały scenariusz filmu, które wyreżyserowały wraz z
+tytułami takich filmów (koniunkcja – ten sam autor scenariusza i reżyser):
+
+MATCH (person:Person)-[:WROTE]->(movie)<-[:DIRECTED]->(person)
+
+ MATCH (person:Person)-[:WROTE]->(movie)
+  WHERE (person)-[:DIRECTED]->(movie)
+   RETURN person.name, movie.title AS movie
+
+#Zadanie 8
+Listę filmów, w których grał zarówno Hugo Weaving jak i Keanu Reeves:
+
+MATCH (actorH:Person { name: 'Hugo Weaving' })-[:ACTED_IN]->(movie)<-[:ACTED_IN]-(actorK:Person { name: 'Keanu Reeves' })
+RETURN movie

@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/fsYkFpxnYHiVmMGUyJzHynDyXNRNviwA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.8 (that head fake, tho)
+Link: </buckets/s14185>; rel="up"
+Last-Modified: Mon, 11 Jun 2021 14:11:23 GMT
+ETag: "5RfRp0O1NpYaetasLBtZcg"
+Date: Mon, 11 Jun 2021 14:11:23 GMT
+Content-Type: application/json
+Content-Length: 78
+
+{
+  "name": "Benjamin Romero",
+  "studiesAverage": 5.0,
+  "isGraduate": true
+}
